@@ -20,8 +20,8 @@ def main():
         
     if st.session_state.page == 'Inicio':
         mostrar_home()
-    if st.session_state.page == 'registro-usuario':
-        #mostrar_registro()
+    # if st.session_state.page == 'registro-usuario':
+    #     #mostrar_registro()
 
 if __name__ == "__main__":
     main()
