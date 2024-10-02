@@ -54,18 +54,16 @@ class DataManagerMoneda:
         
     @st.dialog('Modificar Moneda')
     def modify_moneda(self, id, nombre):
-        col_a, col_b, col_c = st.columns([0.5,9,0.5])
-        with col_b:
-            nombre_moneda = st.text_input('Ingrese la moneda: ', value=nombre)
-            col_I, col_II, col_III = st.columns([5,4,4])
-            with col_II:
-                if st.button('Modificar',use_container_width= True):
-                    self.db_moneda.actualizar_datos(id, nombre_moneda)
-                    st.rerun()
-            with col_III:
-                if st.button('Eliminar', use_container_width= True):
-                    self.db_moneda.eliminar_datos(id)
-                    st.rerun()
+        nombre_moneda = st.text_input('Ingrese la moneda: ', value=nombre)
+        col_I, col_II, col_III = st.columns([5,4,4])
+        with col_II:
+            if st.button('Modificar',use_container_width= True):
+                self.db_moneda.actualizar_datos(id, nombre_moneda)
+                st.rerun()
+        with col_III:
+            if st.button('Eliminar', use_container_width= True):
+                self.db_moneda.eliminar_datos(id)
+                st.rerun()
     
     def display_moneda(self):
         data_moneda = self.db_moneda.obtener_datos()
