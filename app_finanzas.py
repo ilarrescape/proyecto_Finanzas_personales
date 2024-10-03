@@ -1,7 +1,10 @@
 import streamlit as st 
 import pandas as pd
 
+from dialog_de_prueba import mostrar_df
+
 from moneda import fun_moneda
+
 
 def mostrar_home():
     st.title('Bienvenido a la Aplicación de Finanzas Personales :smile:')
@@ -36,11 +39,15 @@ def main():
         st.session_state.page = 'registro-usuario'
     if st.sidebar.button('Configurar Moneda',use_container_width=True):
         st.session_state.page = 'config-currency'
-        
+    if st.sidebar.button('Emergente de Ejemplo',use_container_width=True):
+        st.session_state.page = 'emergente'
+    
     if st.session_state.page == 'Inicio':
         mostrar_home()
     if st.session_state.page == 'config-currency':
         fun_moneda()
+    if st.session_state.page == 'emergente':
+        mostrar_df()
     # if st.session_state.page == 'registro-usuario':
     #     #mostrar_registro()
 

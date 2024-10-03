@@ -32,4 +32,18 @@ class CategoriaTransaccion:
     def eliminar_categoria(self,id):
         self.cursor.execute('DELETE FROM categoria_transaccion WHERE id_categoria = %s',(id,))
         self.connection.commit()
+    
+class DataManagerCategoriaTransaccion:
+    def __init__(self) -> None:
+        self.db_categoria_transaccion = CategoriaTransaccion()
+    
+    def display_categoria_transaccion(self):
+        data_categoria_transaccion = self.db_categoria_transaccion.obtener_categoria()
         
+        st.write(data_categoria_transaccion)
+        dataframe_categoria_transaccion = pd.DataFrame(data_categoria_transaccion)
+        dataframe_categoria_transaccion = dataframe_categoria_transaccion.rename(columns={'id_categoria':'ID',
+                                                                                        'nombre_categoria':'NOMBRE',
+                                                                                        'tipo_categoria':'TIPO'})
+        return dataframe_categoria_transaccion
+
