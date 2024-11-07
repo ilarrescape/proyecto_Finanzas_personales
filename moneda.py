@@ -70,7 +70,7 @@ class DataManagerMoneda:
         dataframe_moneda = pd.DataFrame(data_moneda)
         dataframe_moneda = dataframe_moneda.rename(columns={'id_moneda':'ID', 'nombre_moneda':'NOMBRE'})
         evento = st.dataframe(dataframe_moneda,
-                    height=175,
+                    height=185,
                     use_container_width=True,
                     hide_index=True, 
                     selection_mode="single-row",
@@ -93,6 +93,8 @@ def fun_moneda():
     objeto_moneda = DataManagerMoneda()
     col_I, col_II = st.columns(2)
     with col_I:
+        
         objeto_moneda.add_moneda()
     with col_II:
+        
         objeto_moneda.display_moneda()
