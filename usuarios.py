@@ -15,6 +15,8 @@ import bcrypt
 
 
 
+
+
 if 'nombre_usuario' not in st.session_state:
     st.session_state.nombre_usuario = None
 
@@ -59,6 +61,10 @@ def hashear_contraseña(contraseña):
 # Función para verificar la contraseña
 def verificar_contraseña(hash_guardada, contraseña_ingresada):
     return bcrypt.checkpw(contraseña_ingresada.encode('utf-8'), hash_guardada.encode('utf-8 '))
+
+st.set_page_config(
+    layout='wide'
+)
 
 
 class Usuario:
@@ -193,7 +199,7 @@ class DataManagerUsuario:
     def login_usuario(self):
         valido = False
         mensaje = ''
-        col_I,col_II, col_III = st.columns([2,5,2])
+        col_I,col_II, col_III = st.columns([6,5,6])
         with col_II:
             with st.container(border=True):
                 st.image('estaticos\\sistema.webp')
@@ -214,7 +220,6 @@ class DataManagerUsuario:
                         st.session_state.nombre_usuario = username
             return valido
 
-### Creamos Las Validaciones de Login Acá ###
 def main_usuarios():
     if st.session_state['usuario_valido'] == True:
         main_finanzas(st.session_state['usuario_valido'])
@@ -224,5 +229,5 @@ def main_usuarios():
         
         if st.session_state['usuario_valido']:
             st.rerun()
-    
+
 main_usuarios()

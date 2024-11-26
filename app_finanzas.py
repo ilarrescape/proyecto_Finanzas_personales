@@ -3,8 +3,8 @@ import pandas as pd
 
 from dotenv import load_dotenv
 from dialog_de_prueba import mostrar_df
-
 from moneda import fun_moneda
+from cuentas import main_cuentas
 
 load_dotenv()
 
@@ -41,8 +41,13 @@ def main_finanzas(es_valido):
             st.session_state.page = 'Inicio'
         if st.sidebar.button('Configurar Moneda',use_container_width=True):
             st.session_state.page = 'config-currency'
+        if st.sidebar.button('Administrar Cuentas', use_container_width=True):
+            st.session_state.page = 'bank-account'
         
+        ### -----------------###
         if st.session_state.page == 'Inicio':
             mostrar_home()
         if st.session_state.page == 'config-currency':
             fun_moneda()
+        if st.session_state.page == 'bank-account':
+            main_cuentas()
